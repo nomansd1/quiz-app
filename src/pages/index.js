@@ -1,9 +1,23 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import { Grid, Card, CardContent, Typography, List, ListItem, ListItemText, Button } from '@mui/material';
+import stylesheet from '../styles/Home.module.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const data = [
+  {
+    min: '15',
+    testType: 'quick check',
+    subHeading: 'Check your English level',
+    items: ['No fees, No sign up, Start now', 'Beginner, intermediate, and advanced', 'Share your score on social media'],
+    navText: 'quiz details'
+  },
+  {
+    min: '50',
+    testType: 'EF set',
+    subHeading: 'Certify your English proficiency',
+    items: ['Get a personalized EF SET Certificate', 'Results fully aligned with CEFR levels', 'Free'],
+    navText: 'text details'
+  },
+];
 
 export default function Home() {
   return (
@@ -14,101 +28,41 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+      <div className={stylesheet.homeBx}>
+        <h1 className={stylesheet.home__title}>Test your English now</h1>
+        <Grid container spacing={4} className={stylesheet.inner__grid}>
+          {data.map((cardData, index) => (
+            <Grid item xs={12} sm={4} key={index}>
+              <Card>
+                <CardContent className={stylesheet.card__content}>
+                  <h1 className={stylesheet.card__title}>
+                    {cardData.min}
+                    <span className={stylesheet.card__titleBx}>
+                      <sup className={stylesheet.card__titleSup}>MIN</sup>
+                      <h1 className={stylesheet.card__titleTest}>{cardData.testType}</h1>
+                    </span>
+                  </h1>
+                  <p className={stylesheet.card__subHeading}>{cardData.subHeading}</p>
+                  <ul className={stylesheet.card__items}>
+                    {cardData.items.map((item, itemIndex) => (
+                      <li className={stylesheet.card__itemsText} key={itemIndex}>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button className={stylesheet.take__quizBtn}>Take the quiz</button>
+                  <button className={stylesheet.quizDetails__btn}>
+                    {cardData.navText}
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                  </button>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </div>
     </>
   )
 }
