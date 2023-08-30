@@ -1,0 +1,20 @@
+.header {
+    background-color: #FFFFFF;
+    padding: 10px;
+}
+.headerTool {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+.logo {
+    color: #000;
+}
+.logo i {
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+.logo span {
+    font-weight: 300;
+    margin-left: 10px;
+}
