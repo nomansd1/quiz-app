@@ -11,7 +11,7 @@
 .card {
     width: 600px;
     margin: 3rem auto;  
-    padding: 2rem;
+    padding: 1rem;
 }
 .card__content h1 {
     font-size: 18px;
@@ -26,8 +26,16 @@
     margin: 3rem 0;
 }
 .icon_bx span {
-    font-size: 40px;
+    font-size: 28px;
     font-weight: 600;
+}
+@media (min-width: 768px) {
+    .card {
+        padding: 2rem;
+    }
+    .icon_bx span {
+        font-size: 48px;
+    }
 }
 .icon_elem {
     display: flex;

@@ -32,7 +32,7 @@ export default function Home() {
         <h1 className={stylesheet.home__title}>Test your English now</h1>
         <Grid container spacing={4} className={stylesheet.inner__grid}>
           {data.map((cardData, index) => (
-            <Grid item xs={12} sm={4} key={index}>
+            <Grid item xs={12} sm={7} md={4} key={index}>
               <Card>
                 <CardContent className={stylesheet.card__content}>
                   <h1 className={stylesheet.card__title}>
