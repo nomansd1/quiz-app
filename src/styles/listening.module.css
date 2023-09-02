@@ -7,16 +7,29 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: calc(90vh - 20px);
+    width: 100%;
 }
 .audio_track, .question {
-    width: 50%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 1rem;
+}
+@media (min-width: 768px) {
+    .grid {
+        height: calc(90vh - 20px);
+    }
+    .audio_track, .question {
+        width: 50%;
+        padding: 2rem;
+    }
+    .btn_bx div p {
+        font-size: 22px;
+        font-weight: 600;
+    }
 }
 .audio_track {
     align-items: flex-start;
@@ -60,7 +73,7 @@
     margin-left: 2rem;
 } 
 .btn_bx div p {
-    font-size: 22px;
+    font-size: 14px;
     font-weight: 600;
 }
 .question {

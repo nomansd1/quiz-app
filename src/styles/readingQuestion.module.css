@@ -1,9 +1,13 @@
 .card {
-    width: 500px;
+    width: 100%;
     padding: 1rem;
     background-color: #F4F8FC;
   }
-  
+  @media (min-width: 768px) {
+    .card {
+      width: 500px;
+    }
+  }
   .selected {
     color: white !important;
     background-color: #62A7F8 !important;
