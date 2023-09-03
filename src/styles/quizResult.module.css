@@ -1,0 +1,133 @@
+.page_body {
+    background-color: #EAF2F9;
+}
+.result__grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 4rem 0;
+    gap: 1rem;
+    height: fit-content;
+}
+.result__details {
+    width: 632px;
+    background-color: white;
+    padding: 2rem;
+    height: 100%;
+    border-radius: 1em;
+}
+.result__progressBar {
+    width: 304px;
+    padding: 2rem;
+    background-color: #F59A51;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    position: relative;
+}
+.result__progressBar h1 {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+.result__progressBar p {
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 19px;
+}
+.result__progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative !important;
+}
+.progress {
+    font-size: 38px;
+    font-style: normal;
+}
+.progress__value {
+    font-size: 54px;
+    font-weight: 800;
+    position: absolute;
+}
+.que__progress {
+    font-size: 18px;
+    font-style: normal;
+}
+.que__value {
+    font-size: 24px;
+    font-weight: 500;
+    position: absolute;
+    margin-top: 10px;
+    color: #8EAC79;
+}
+.que__result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+}
+.que__level {
+    font-size: 14px;
+}
+.result__details h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.result__detailsPara {
+    font-size: 15px;
+    margin-bottom: 1rem;
+}
+.result__detailsBx {
+    display: flex;
+    align-items: center !important;
+}
+.result__detailsBx h1 {
+    font-size: 20px;
+    margin-left: 10px;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+.que__resultRight p {
+    font-size: 15px;
+    margin-top: .5rem;
+}
+.share__resultBx {
+    background-color: white;
+    border-radius: 1em;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+.share__resultBx p {
+    text-align: center;
+    font-weight: 600;
+}
+.social__iconsBx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+.social__iconsBx span {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    border-radius: 100%;
+    background-color: #eaeaea;
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social__iconsBx span svg {
+    width: 70%;
+    height: 70%;
+}
