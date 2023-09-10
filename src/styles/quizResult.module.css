@@ -10,12 +10,17 @@
     gap: 1rem;
     height: fit-content;
 }
-.result__details {
+.result__detailsCont {
     width: 632px;
+    height: 100%;
+}
+.result__details, .result__tableCont {
     background-color: white;
     padding: 2rem;
-    height: 100%;
     border-radius: 1em;
+}
+.result__tableCont {
+    margin-top: 1rem;
 }
 .result__progressBar {
     width: 304px;
@@ -77,7 +82,7 @@
 .que__level {
     font-size: 14px;
 }
-.result__details h1 {
+.result__details h1, .result__tableCont h1 {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -130,4 +135,100 @@
 .social__iconsBx span svg {
     width: 70%;
     height: 70%;
+}
+.result__tableCont table {
+    border-collapse: collapse;
+}
+.result__tableCont table thead th,
+.result__tableCont table tbody td {
+    width: 100px;
+    text-align: center;
+    padding: 1rem;
+}
+.result__tableCont table thead th,
+.result__tableCont table tbody th {
+    font-size: 16px;
+    font-weight: 500;
+}
+.result__tableCont table tbody td {
+    font-size: 15px;
+}
+.result__tableCont table thead th:nth-child(2),
+.result__tableCont table tbody td:nth-child(2) {
+    background-color: #F59A51;
+    color: #fff;
+}
+
+
+
+
+.inner__grid {
+    justify-content: center;
+    margin-top: 1rem;
+}
+.card__content {
+    padding: 3rem 2rem;
+    min-height: fit-content;
+}
+.card__title {
+    display: flex;
+    font-size: 80px;
+    font-weight: 600;
+    color: #45D9D5;
+    line-height: 1;
+}
+.card__titleBx {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+.card__titleSup {
+    font-size: 20px;
+}
+.card__titleTest {
+    font-size: 36px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+.card__subHeading {
+    margin-top: 3rem;
+    font-size: 20px;
+    font-weight: 600;
+}
+.card__items {
+    margin: 2rem 0 0 1rem;
+}
+.card__itemsText {
+    font-size: 15px;
+}
+.take__quizBtn {
+    margin-top: 2rem;
+    background-color: #45D9D5;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    outline: none;
+}
+.quizDetails__btn {
+    margin-top: 3rem;
+    background-color: transparent;
+    color: #45D9D5;
+    padding: 1rem 1.3rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 5px;
+    text-transform: capitalize;
+}
+.quizDetails__btn svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: 10px;
 }

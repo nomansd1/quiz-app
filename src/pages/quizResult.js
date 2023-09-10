@@ -1,8 +1,26 @@
 import Head from 'next/head'
 import stylesheet from '../styles/quizResult.module.css'
 import Header from '@/components/header'
-import { CircularProgress } from '@mui/material';
+import { Card, CardContent, CircularProgress, Grid } from '@mui/material';
 import Image from 'next/image';
+
+const data = [
+    {
+      min: '15',
+      testType: 'quick check',
+      subHeading: 'Check your English level',
+      items: ['No fees, No sign up, Start now', 'Beginner, intermediate, and advanced', 'Share your score on social media'],
+      navText: 'quiz details'
+    },
+    {
+      min: '50',
+      testType: 'EF set',
+      subHeading: 'Certify your English proficiency',
+      items: ['Get a personalized EF SET Certificate', 'Results fully aligned with CEFR levels', 'Free'],
+      navText: 'text details'
+    },
+  ];
+  
 
 export default function QuiaResult() {
     return (
@@ -49,7 +67,8 @@ export default function QuiaResult() {
                             </div>
                         </div>
                     </div>
-                    <div className={stylesheet.result__details}>
+                    <div className={stylesheet.result__detailsCont}>
+                        <div className={stylesheet.result__details}>
                         <h1>Your score explained</h1>
                         <p className={stylesheet.result__detailsPara}>
                             Your score indicates that your level is in the range of A1 BEGINNER to A2 ELEMENTARY, according to the guidelines set by the Common European Framework of Reference (CEFR).
@@ -105,8 +124,60 @@ export default function QuiaResult() {
                                 </p>
                             </div>
                         </div>
+                        </div>
+                        <div className={stylesheet.result__tableCont}>
+                            <h1>Quick check score table</h1>
+                           <table>
+                            <thead>
+                                <th>Level</th>
+                                <th>Beginner</th>
+                                <th>Intermediate</th>
+                                <th>Advanced</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>EF SET</th>
+                                    <td>1-60%</td>
+                                    <td>1-60%</td>
+                                    <td>1-60%</td>
+                                </tr>
+                            </tbody>
+                           </table>
+                        </div>
                     </div>
                 </div>
+                <Grid container spacing={4} className={stylesheet.inner__grid}>
+          {data.map((cardData, index) => (
+            <Grid item xs={12} sm={7} md={4} key={index}>
+              <Card>
+                <CardContent className={stylesheet.card__content}>
+                  <h1 className={stylesheet.card__title}>
+                    {cardData.min}
+                    <span className={stylesheet.card__titleBx}>
+                      <sup className={stylesheet.card__titleSup}>MIN</sup>
+                      <h1 className={stylesheet.card__titleTest}>{cardData.testType}</h1>
+                    </span>
+                  </h1>
+                  <p className={stylesheet.card__subHeading}>{cardData.subHeading}</p>
+                  <ul className={stylesheet.card__items}>
+                    {cardData.items.map((item, itemIndex) => (
+                      <li className={stylesheet.card__itemsText} key={itemIndex}>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button className={stylesheet.take__quizBtn}>Take the quiz</button>
+                  <button className={stylesheet.quizDetails__btn}>
+                    {cardData.navText}
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                  </button>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
             </div>
         </>
     )
