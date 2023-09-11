@@ -170,26 +170,6 @@
     padding: 3rem 2rem;
     min-height: fit-content;
 }
-.card__title {
-    display: flex;
-    font-size: 80px;
-    font-weight: 600;
-    color: #45D9D5;
-    line-height: 1;
-}
-.card__titleBx {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-}
-.card__titleSup {
-    font-size: 20px;
-}
-.card__titleTest {
-    font-size: 36px;
-    line-height: 1;
-    text-transform: uppercase;
-}
 .card__subHeading {
     margin-top: 3rem;
     font-size: 20px;
@@ -201,21 +181,15 @@
 .card__itemsText {
     font-size: 15px;
 }
-.take__quizBtn {
-    margin-top: 2rem;
-    background-color: #45D9D5;
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 9999px;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    outline: none;
+.quizDetails__bx {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .quizDetails__btn {
     margin-top: 3rem;
-    background-color: transparent;
-    color: #45D9D5;
+    background-color: white;
+    color: #000;
     padding: 1rem 1.3rem;
     border-radius: 9999px;
     font-size: 1rem;
@@ -224,11 +198,14 @@
     outline: none;
     display: inline-flex;
     align-items: center;
-    margin-left: 5px;
+    margin-left: auto;
+    margin-right: auto;
     text-transform: capitalize;
+    box-shadow: 0 5px 5px lightgray;
+
 }
 .quizDetails__btn svg {
-    width: 1.2rem;
-    height: 1.2rem;
-    margin-left: 10px;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 10px;
 }

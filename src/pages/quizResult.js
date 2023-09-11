@@ -6,21 +6,19 @@ import Image from 'next/image';
 
 const data = [
     {
-      min: '15',
-      testType: 'quick check',
-      subHeading: 'Check your English level',
-      items: ['No fees, No sign up, Start now', 'Beginner, intermediate, and advanced', 'Share your score on social media'],
-      navText: 'quiz details'
+        image: '/qrgrid1.png',
+        subHeading: 'Try our speaking test',
+        text: 'Test your fluency and pronunciation in 15 minutes with our new speaking test!',
+        navText: 'quiz details'
     },
     {
-      min: '50',
-      testType: 'EF set',
-      subHeading: 'Certify your English proficiency',
-      items: ['Get a personalized EF SET Certificate', 'Results fully aligned with CEFR levels', 'Free'],
-      navText: 'text details'
+        image: '/qrgrid2.png',
+        subHeading: 'Get your EF SET Certificate',
+        text: 'Take the 50-minute EF SET to receive your personalized English certificate URL to add to your LinkedIn profile or CV.',
+        navText: 'text details'
     },
-  ];
-  
+];
+
 
 export default function QuiaResult() {
     return (
@@ -69,115 +67,109 @@ export default function QuiaResult() {
                     </div>
                     <div className={stylesheet.result__detailsCont}>
                         <div className={stylesheet.result__details}>
-                        <h1>Your score explained</h1>
-                        <p className={stylesheet.result__detailsPara}>
-                            Your score indicates that your level is in the range of A1 BEGINNER to A2 ELEMENTARY, according to the guidelines set by the Common European Framework of Reference (CEFR).
-                        </p>
-                        <p className={stylesheet.result__detailsPara}>
-                            You are on your way to comprehending written and spoken vocabulary and sentences on topics from your daily life.
-                        </p>
-                        <div className={stylesheet.que__result}>
-                            <div className={stylesheet.que__resultLeft}>
-                                <div className={stylesheet.result__progress}>
-                                    <CircularProgress sx={{ color: '#8EAC79', marginBottom: '1rem', marginTop: '2rem', }} thickness={2} size='5rem' variant='determinate' value={86} />
-                                    <span className={stylesheet.que__value}>
-                                        {86}<i className={stylesheet.que__progress}>%</i>
-                                    </span>
+                            <h1>Your score explained</h1>
+                            <p className={stylesheet.result__detailsPara}>
+                                Your score indicates that your level is in the range of A1 BEGINNER to A2 ELEMENTARY, according to the guidelines set by the Common European Framework of Reference (CEFR).
+                            </p>
+                            <p className={stylesheet.result__detailsPara}>
+                                You are on your way to comprehending written and spoken vocabulary and sentences on topics from your daily life.
+                            </p>
+                            <div className={stylesheet.que__result}>
+                                <div className={stylesheet.que__resultLeft}>
+                                    <div className={stylesheet.result__progress}>
+                                        <CircularProgress sx={{ color: '#8EAC79', marginBottom: '1rem', marginTop: '2rem', }} thickness={2} size='5rem' variant='determinate' value={86} />
+                                        <span className={stylesheet.que__value}>
+                                            {86}<i className={stylesheet.que__progress}>%</i>
+                                        </span>
+                                    </div>
+                                    <p className={stylesheet.que__level}>Intermediate</p>
                                 </div>
-                                <p className={stylesheet.que__level}>Intermediate</p>
-                            </div>
-                            <div className={stylesheet.que__resultRight}>
-                                <div className={stylesheet.result__detailsBx}>
-                                    <Image
-                                        src='/readingicon.svg'
-                                        width={25}
-                                        height={25}
-                                    />
-                                    <h1>Reading Score</h1>
+                                <div className={stylesheet.que__resultRight}>
+                                    <div className={stylesheet.result__detailsBx}>
+                                        <Image
+                                            src='/readingicon.svg'
+                                            width={25}
+                                            height={25}
+                                        />
+                                        <h1>Reading Score</h1>
+                                    </div>
+                                    <p>
+                                        You understand the main points of more abstract written texts, and you are able to infer meaning of some unfamiliar vocabulary.
+                                    </p>
                                 </div>
-                                <p>
-                                    You understand the main points of more abstract written texts, and you are able to infer meaning of some unfamiliar vocabulary.
-                                </p>
                             </div>
-                        </div>
-                        <div className={stylesheet.que__result}>
-                            <div className={stylesheet.que__resultLeft}>
-                                <div className={stylesheet.result__progress}>
-                                    <CircularProgress sx={{ color: '#D67D41', marginBottom: '1rem', marginTop: '2rem', }} thickness={2} size='5rem' variant='determinate' value={86} />
-                                    <span className={stylesheet.que__value}>
-                                        {86}<i className={stylesheet.que__progress}>%</i>
-                                    </span>
+                            <div className={stylesheet.que__result}>
+                                <div className={stylesheet.que__resultLeft}>
+                                    <div className={stylesheet.result__progress}>
+                                        <CircularProgress sx={{ color: '#D67D41', marginBottom: '1rem', marginTop: '2rem', }} thickness={2} size='5rem' variant='determinate' value={86} />
+                                        <span className={stylesheet.que__value}>
+                                            {86}<i className={stylesheet.que__progress}>%</i>
+                                        </span>
+                                    </div>
+                                    <p className={stylesheet.que__level}>Beginner</p>
                                 </div>
-                                <p className={stylesheet.que__level}>Beginner</p>
-                            </div>
-                            <div className={stylesheet.que__resultRight}>
-                                <div className={stylesheet.result__detailsBx}>
-                                    <Image
-                                        src='/listenicon.svg'
-                                        width={25}
-                                        height={25}
-                                    />
-                                    <h1>Listening Score</h1>
+                                <div className={stylesheet.que__resultRight}>
+                                    <div className={stylesheet.result__detailsBx}>
+                                        <Image
+                                            src='/listenicon.svg'
+                                            width={25}
+                                            height={25}
+                                        />
+                                        <h1>Listening Score</h1>
+                                    </div>
+                                    <p>
+                                        You understand the general idea of conversations relevant to you provided they are clearly communicated and using high-frequency expressions.
+                                    </p>
                                 </div>
-                                <p>
-                                    You understand the general idea of conversations relevant to you provided they are clearly communicated and using high-frequency expressions.
-                                </p>
                             </div>
-                        </div>
                         </div>
                         <div className={stylesheet.result__tableCont}>
                             <h1>Quick check score table</h1>
-                           <table>
-                            <thead>
-                                <th>Level</th>
-                                <th>Beginner</th>
-                                <th>Intermediate</th>
-                                <th>Advanced</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>EF SET</th>
-                                    <td>1-60%</td>
-                                    <td>1-60%</td>
-                                    <td>1-60%</td>
-                                </tr>
-                            </tbody>
-                           </table>
+                            <table>
+                                <thead>
+                                    <th>Level</th>
+                                    <th>Beginner</th>
+                                    <th>Intermediate</th>
+                                    <th>Advanced</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>EF SET</th>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
+                <h2 style={{textAlign: 'center'}}>Recommended for you</h2>
                 <Grid container spacing={4} className={stylesheet.inner__grid}>
-          {data.map((cardData, index) => (
-            <Grid item xs={12} sm={7} md={4} key={index}>
-              <Card>
-                <CardContent className={stylesheet.card__content}>
-                  <h1 className={stylesheet.card__title}>
-                    {cardData.min}
-                    <span className={stylesheet.card__titleBx}>
-                      <sup className={stylesheet.card__titleSup}>MIN</sup>
-                      <h1 className={stylesheet.card__titleTest}>{cardData.testType}</h1>
-                    </span>
-                  </h1>
-                  <p className={stylesheet.card__subHeading}>{cardData.subHeading}</p>
-                  <ul className={stylesheet.card__items}>
-                    {cardData.items.map((item, itemIndex) => (
-                      <li className={stylesheet.card__itemsText} key={itemIndex}>
-                        <span>{item}</span>
-                      </li>
+                    {data.map((cardData, index) => (
+                        <Grid item xs={12} sm={7} md={4} key={index}>
+                            <Card>
+                                <CardContent className={stylesheet.card__content}>
+                                    <div>
+                                        <Image src={cardData.image} width={0}
+                                            height={0}
+                                            sizes="100vw"
+                                            style={{ width: '100%', height: 'auto' }} />
+                                    </div>
+                                    <p className={stylesheet.card__subHeading}>{cardData.subHeading}</p>
+                                    <p className={stylesheet.card__itemsText}>{cardData.text}</p>
+                                    <div className={stylesheet.quizDetails__bx}>
+                                        <button className={stylesheet.quizDetails__btn}>
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4.5C10.314 4.5 9 5.80455 9 7.35V12.15C9 13.6955 10.314 15 12 15C13.686 15 15 13.6955 15 12.15L15 7.35C15 5.80455 13.686 4.5 12 4.5ZM7.5 7.35C7.5 4.919 9.54387 3 12 3C14.4561 3 16.5 4.919 16.5 7.35L16.5 12.15C16.5 14.581 14.4561 16.5 12 16.5C9.54387 16.5 7.5 14.581 7.5 12.15V7.35ZM6.75 12.75C6.75 15.1443 9.0033 17.25 12 17.25C14.9967 17.25 17.25 15.1443 17.25 12.75H18.75C18.75 15.9176 16.0499 18.3847 12.75 18.7129V21H11.25V18.7129C7.95007 18.3847 5.25 15.9176 5.25 12.75H6.75Z" fill="#080341"></path> </g></svg>
+                                        {cardData.navText}
+                                        </button>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+
                     ))}
-                  </ul>
-                  <button className={stylesheet.take__quizBtn}>Take the quiz</button>
-                  <button className={stylesheet.quizDetails__btn}>
-                    {cardData.navText}
-                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                    </svg>
-                  </button>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                </Grid>
             </div>
         </>
     )
