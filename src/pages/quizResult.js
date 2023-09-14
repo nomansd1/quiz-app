@@ -123,7 +123,8 @@ export default function QuiaResult() {
                                 </div>
                             </div>
                         </div>
-                        <div className={stylesheet.result__tableCont}>
+
+                        {/* <div className={stylesheet.result__tableCont}>
                             <h1>Quick check score table</h1>
                             <table>
                                 <thead>
@@ -135,6 +136,49 @@ export default function QuiaResult() {
                                 <tbody>
                                     <tr>
                                         <th>EF SET</th>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> */}
+                        <div className={stylesheet.result__tableCont}>
+                            <h1>Score comparision table</h1>
+                            <table>
+                                <thead>
+                                    <th>CEFR</th>
+                                    <th>A1</th>
+                                    <th>A2</th>
+                                    <th>B1</th>
+                                    <th>B2</th>
+                                    <th>C1</th>
+                                    <th>C2</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>EF SET</th>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>TOEFL</th>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                    </tr>
+                                    <tr>
+                                        <th>IELTS</th>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
+                                        <td>1-60%</td>
                                         <td>1-60%</td>
                                         <td>1-60%</td>
                                         <td>1-60%</td>
