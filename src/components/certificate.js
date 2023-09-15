@@ -1,6 +1,8 @@
 import { Grid, Typography,Container,Hidden } from '@mui/material'
 import stylesheet from '../styles/certificate.module.css'
 import Paper from '@mui/material/Paper';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { doc, setDoc, collection, addDoc,getFirestore } from 'firebase/firestore';
 import { styled } from '@mui/material/styles';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import myPdf from '../../.next/static/pdf/mycertificate.pdf'; // Adjust the path as needed
@@ -8,6 +10,9 @@ import React,{useEffect} from 'react'
 import {app} from '../firebase'
 
 export default function Certificate() {
+  // Get a reference to the storage service
+const storage = getStorage();
+const db = getFirestore(app);
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
         ...theme.typography.body2,
@@ -15,60 +20,68 @@ export default function Certificate() {
         textAlign: 'center',
         color: theme.palette.text.secondary,
       }));
-      async function createPdf() {
-        try {
-          // Load the PDF file using a relative path
-          const pdfBytes = await fetch(myPdf).then((res) => res.arrayBuffer());
-      
-          // Load the PDF document
-          const pdfDoc = await PDFDocument.load(pdfBytes);
-      
-          // Embed fonts
-          const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);
-      
-          // Create a new page
-           // Get the first page of the document
-   const pages = pdfDoc.getPages();
-   const firstPage = pages[0];
+// Function to add data to a collection
+async function addLink(collectionName, data) {
+  try {
+    // Add the data to the collection
+    const docRef = await addDoc(collection(db, collectionName), data);
+    
+    // Return the auto-generated ID
+    return { id: docRef.id, error: null };
+  } catch (error) {
+    return { id: null, error };
+  }
+}
+ 
+async function createPdf() {
+  try {
+    // Generate the PDF as you were doing
+    // Load the PDF file using a relative path
+    const pdfBytes = await fetch(myPdf).then((res) => res.arrayBuffer());
+    // Load the PDF document
+    const pdfDoc = await PDFDocument.load(pdfBytes);
+    const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);
+    const pages = pdfDoc.getPages();
+    const firstPage = pages[0];
+ 
+    firstPage.drawText('Subhan Akram', {
+     x: 290,
+     y: 300,
+     size: 40,
+     color: rgb(0, 0, 0),
+   });
 
-   firstPage.drawText('Subhan Akram', {
-    x: 290,
-    y: 300,
-    size: 40,
-    color: rgb(0, 0, 0),
-  });
-      
-          // Draw text on the page
-          // const { width, height } = page.getSize();
-          // const fontSize = 30;
-          // page.drawText('This is Syed Hasnain Askari', {
-          //   x: 50,
-          //   y: height - 4 * fontSize,
-          //   size: fontSize,
-          //   font: timesRomanFont,
-          //   color: rgb(0, 0.53, 0.71),
-          // });
-      
-          // Save the modified PDF
-          const pdfBytesModified = await pdfDoc.save();
-      
-          // Convert the PDF bytes to a blob
-          const pdfBlob = new Blob([pdfBytesModified], { type: 'application/pdf' });
-      
-          // Create a URL for the modified PDF blob
-          const pdfUrl = URL.createObjectURL(pdfBlob);
-      
-          // Open the PDF in a new tab (you can also trigger a download)
-          window.open(pdfUrl, '_blank');
-      
-          // Clean up the URL object to release resources
-          URL.revokeObjectURL(pdfUrl);
-      
-          console.log('PDF manipulation complete.');
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      }
+    const pdfBytesModified = await pdfDoc.save();
+    // Create a reference to the PDF file in Firebase Cloud Storage
+    const pdfFileRef = ref(storage, `pdfs/${pdfDoc}`);
+
+    // Upload the PDF file
+    await uploadBytes(pdfFileRef, pdfBytesModified);
+
+    console.log('PDF uploaded successfully');
+
+    // Get the download URL for the uploaded PDF
+    const pdfUrl = await getDownloadURL(pdfFileRef);
+
+    //Save Link in Firesore
+    const data = {
+      link:pdfUrl,
+    };
+    const { id, error } = await addLink('pdfs', data);
+    if (error) {
+      console.error('Error:', error);
+    } else {
+      console.log('Data added with ID:', id);
+    } 
+
+    // Open the PDF in a new tab (you can also trigger a download)
+    window.open(pdfUrl, '_blank');
+
+    console.log('PDF manipulation complete.');
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
       
 
       async function loadPdf() {

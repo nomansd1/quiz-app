@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import stylesheet from '../styles/listening.module.css'
-import CardHeader from '@/components/cardHeader'
+import Header from '@/components/header'
 import ReadingQuestion from '@/components/readingQuestion'
 
 const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
@@ -15,7 +15,7 @@ export default function Listening() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={stylesheet.page_body}>
-        <CardHeader></CardHeader>
+        <Header></Header>
         <div className={stylesheet.grid}>
           <div className={stylesheet.audio_track}>
             <p className={stylesheet.audio_trackp1}>You will hear 10 speakers.</p>
