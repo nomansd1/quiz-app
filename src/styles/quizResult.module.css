@@ -11,8 +11,17 @@
     height: fit-content;
 }
 .result__detailsCont {
-    width: 632px;
+    width: 100%;
     height: 100%;
+}
+@media (min-width: 748px) {
+    .result__detailsCont {
+        width: 632px;
+    }
+    .que__result {
+        display: flex;
+        flex-direction: row;
+    }
 }
 .result__details, .result__tableCont {
     background-color: white;
@@ -72,8 +81,8 @@
     margin-top: 10px;
     color: #8EAC79;
 }
+
 .que__result {
-    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -136,9 +145,14 @@
     width: 70%;
     height: 70%;
 }
+.result__tableCont {
+    overflow: auto;
+    width: 100%;
+}
 .result__tableCont table {
     border-collapse: collapse;
 }
+
 .result__tableCont table thead th,
 .result__tableCont table tbody td {
     width: 100px;
@@ -158,9 +172,6 @@
     background-color: #F59A51;
     color: #fff;
 }
-
-
-
 
 .inner__grid {
     justify-content: center;

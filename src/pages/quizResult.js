@@ -143,6 +143,7 @@ export default function QuiaResult() {
                                 </tbody>
                             </table>
                         </div> */}
+                        
                         <div className={stylesheet.result__tableCont}>
                             <h1>Score comparision table</h1>
                             <table>
