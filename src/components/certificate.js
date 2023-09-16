@@ -5,7 +5,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { doc, setDoc, collection, addDoc,getFirestore } from 'firebase/firestore';
 import { styled } from '@mui/material/styles';
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
-import myPdf from '../../.next/static/pdf/mycertificate.pdf'; // Adjust the path as needed
+import myPdf from '../../public/pdf/mycertificate.pdf'; // Adjust the path as needed
 import React,{useEffect} from 'react'
 import {app} from '../firebase'
 
@@ -32,8 +32,7 @@ async function addLink(collectionName, data) {
     return { id: null, error };
   }
 }
- 
-async function createPdf() {
+ async function createPdf() {
   try {
     // Generate the PDF as you were doing
     // Load the PDF file using a relative path
@@ -43,17 +42,21 @@ async function createPdf() {
     const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);
     const pages = pdfDoc.getPages();
     const firstPage = pages[0];
- 
+
     firstPage.drawText('Subhan Akram', {
-     x: 290,
-     y: 300,
-     size: 40,
-     color: rgb(0, 0, 0),
-   });
+      x: 290,
+      y: 300,
+      size: 40,
+      color: rgb(0, 0, 0),
+    });
 
     const pdfBytesModified = await pdfDoc.save();
-    // Create a reference to the PDF file in Firebase Cloud Storage
-    const pdfFileRef = ref(storage, `pdfs/${pdfDoc}`);
+
+    // Specify the desired filename with .pdf extension
+    const customFilename = 'certificate.pdf';
+
+    // Create a reference to the PDF file in Firebase Cloud Storage with the custom filename
+    const pdfFileRef = ref(storage, `pdfs/${customFilename}`);
 
     // Upload the PDF file
     await uploadBytes(pdfFileRef, pdfBytesModified);
@@ -61,18 +64,18 @@ async function createPdf() {
     console.log('PDF uploaded successfully');
 
     // Get the download URL for the uploaded PDF
-    const pdfUrl = await getDownloadURL(pdfFileRef);
+    const pdfUrl = await getDownloadURL(pdfFileRef) + "?inline=true";
 
-    //Save Link in Firesore
+    // Save the custom link in Firestore
     const data = {
-      link:pdfUrl,
+      link: pdfUrl,
     };
     const { id, error } = await addLink('pdfs', data);
     if (error) {
       console.error('Error:', error);
     } else {
       console.log('Data added with ID:', id);
-    } 
+    }
 
     // Open the PDF in a new tab (you can also trigger a download)
     window.open(pdfUrl, '_blank');
@@ -82,48 +85,36 @@ async function createPdf() {
     console.error('Error:', error);
   }
 }
+
       
 
-      async function loadPdf() {
-        try {
-          // Import the PDF file using a relative path
-          // Adjust the path as needed
-  
-          // Load the PDF document
-          const pdfDoc = await PDFDocument.load(pdfBytes);
-          const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
-  
-          const page = pdfDoc.getPages()[0]; // Get the first page
-          const { width, height } = page.getSize();
-          const fontSize = 30;
-  
-          // Add text to the PDF
-          page.drawText('This is added text.', {
-            x: 50,
-            y: height - 4 * fontSize,
-            size: fontSize,
-            font: helveticaFont,
-            color: rgb(0, 0.53, 0.71),
-          });
-  
-          // Save the modified PDF
-          const modifiedPdfBytes = await pdfDoc.save();
-  
-          // Create a blob from the modified PDF bytes
-          const modifiedPdfBlob = new Blob([modifiedPdfBytes], { type: 'application/pdf' });
-  
-          // Create a URL for the modified PDF blob
-          const modifiedPdfUrl = URL.createObjectURL(modifiedPdfBlob);
-  
-          // Open the modified PDF in a new tab
-          window.open(modifiedPdfUrl, '_blank');
-  
-          console.log('PDF manipulation complete.');
-        } catch (error) {
-          console.error('Error:', error);
-        }
-  
-      }
+async function loadPdf() {
+  try {
+    const pdfUrl = 'https://firebasestorage.googleapis.com/v0/b/quiz-app-2710b.appspot.com/o/pdfs%2F%5Bobject%20Object%5D?alt=media&token=3d50f0c1-170c-4c66-84fc-39565707eea5'; // Replace with the actual URL of your PDF
+
+    // Load the PDF document
+    const pdfDoc = await PDFDocument.load(pdfUrl);
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+
+    // Save the modified PDF
+    const modifiedPdfBytes = await pdfDoc.save();
+
+    // Create a blob from the modified PDF bytes
+    const modifiedPdfBlob = new Blob([modifiedPdfBytes], { type: 'application/pdf' });
+
+    // Create a URL for the modified PDF blob
+    const modifiedPdfUrl = URL.createObjectURL(modifiedPdfBlob);
+
+    // Open the modified PDF in a new tab
+    window.open(modifiedPdfUrl, '_blank');
+
+    console.log('PDF manipulation complete.');
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+
      
   
   return (
